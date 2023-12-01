@@ -96,4 +96,8 @@ For offline mode, you can play against the computer in both "Rock, Paper, Scisso
 - [Tirath](https://github.com/Tirath5504)
 - [Vikas](https://github.com/codesbyvikas)
 
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
 **Note:** The game project may have additional dependencies not listed here. Ensure that you have a compatible Python environment and install any required packages before running the application.
