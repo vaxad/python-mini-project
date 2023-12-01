@@ -35,7 +35,7 @@ To get started, follow the instructions below.
 2. Change into the project directory:
 
    ```bash
-   cd multiplayer-game
+   cd python-mini-project
    ```
 
 3. Install the required dependencies:
