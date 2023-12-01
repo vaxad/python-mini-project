@@ -1,4 +1,4 @@
-**README for Online and Offline Multiplayer Game Project**
+# Python Mini Project
 
 ## Project Overview
 
