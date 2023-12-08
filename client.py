@@ -7,7 +7,7 @@ from tkinter import messagebox
 clientSocket = socket(AF_INET, SOCK_STREAM)
 clientSocket.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
 
-hostIp = "localhost"
+hostIp = "192.168.11.204"
 portNumber = 7500
 
 clientSocket.connect((hostIp, portNumber))
