@@ -80,7 +80,9 @@ def open_rps_game_mp():
     global gameName
     gameName="RPS"                                                    # setting the game name to "RPS"  
     global txtMessages
-    rps_window = Toplevel(start_screen)                                # creating a new window
+    rps_window = Toplevel(root)   
+    root.withdraw()
+    # creating a new window
     rps_window.title("Rock, Paper, Scissors")
 
     rock_button = Button(rps_window, text="Rock", command=lambda: play_game_mp("Rock"))
@@ -92,18 +94,23 @@ def open_rps_game_mp():
     scissors_button = Button(rps_window, text="Scissors", command=lambda: play_game_mp("Scissors"))
     scissors_button.pack(pady=10)
 
-    quit_button = Button(rps_window, text="Quit", command=rps_window.destroy)
+    quit_button = Button(rps_window, text="Quit", command=lambda: (rps_window.destroy(),root.deiconify()))
     quit_button.pack(pady=10)
+    
     
     txtMessages = Text(rps_window, width=50)
     txtMessages.pack(pady=10)
+    
+    rps_window.protocol("WM_DELETE_WINDOW", lambda: on_rps_game_close(rps_window))
 
 # function to open the rps game in single player offline mode
 def open_rps_game_sp():
     global gameName
     gameName="RPS"                                                          # setting the game name to "RPS"  
     global txtMessages
-    rps_window = Toplevel(start_screen)                                     # creating a new window
+    rps_window = Toplevel(root)
+    root.withdraw()
+    # creating a new window
     rps_window.title("Rock, Paper, Scissors")
 
     rock_button = Button(rps_window, text="Rock", command=lambda: play_game_sp("Rock"))
@@ -115,11 +122,20 @@ def open_rps_game_sp():
     scissors_button = Button(rps_window, text="Scissors", command=lambda: play_game_sp("Scissors"))
     scissors_button.pack(pady=10)
 
-    quit_button = Button(rps_window, text="Quit", command=rps_window.destroy)
+    quit_button = Button(rps_window, text="Quit", command=lambda: (rps_window.destroy(),root.deiconify()))
     quit_button.pack(pady=10)
     
     txtMessages = Text(rps_window, width=50)
     txtMessages.pack(pady=10)
+    
+    rps_window.protocol("WM_DELETE_WINDOW", lambda: on_rps_game_close(rps_window))
+    
+    # Callback function for closing the RPS game window
+def on_rps_game_close(window):
+    global gameName
+    gameName = "none"
+    root.deiconify()  # Make the root window visible again
+    window.destroy()  # Destroy the RPS game window
     
 # class for TicTacToe game
 class TicTacToe:
@@ -131,6 +147,8 @@ class TicTacToe:
         self.type=type
         self.board = [[' ' for _ in range(3)] for _ in range(3)]        # Initialize the game board
         self.current_player_sp='X'                                      # Variable to keep track of the current player
+        master.protocol("WM_DELETE_WINDOW", self.on_close)
+
         
         # Create buttons for the game grid
         if(self.type=="mp"):
@@ -144,6 +162,12 @@ class TicTacToe:
         for row in range(3):
             for col in range(3):
                 self.buttons[row][col].grid(row=row, column=col)
+            # Callback function for closing the TicTacToe window
+    def on_close(self):
+        global game
+        root.deiconify()  # Make the root window visible again
+        game = None  # Reset the game object
+        self.master.destroy()
     
     # function to make move in multiplayer mode
     def make_move_mp(self, row, col, ttt_current_player):
@@ -309,33 +333,36 @@ class TicTacToe:
 # function to open the TicTacToe game in multiplayer online mode
 def open_tic_tac_toe_mp():
     global game
-    root = Tk()
-    root.geometry("500x500")
+    open_tic_tac_toe_mp_window=Toplevel(root)
+    root.withdraw()
+    open_tic_tac_toe_mp_window.geometry("320x362")
 
     # Create and start the game
-    game = TicTacToe( master=root, type="mp")
-    root.mainloop()
+    game = TicTacToe( master=open_tic_tac_toe_mp_window, type="mp")
+    open_tic_tac_toe_mp_window.mainloop()
     
 # function to open the TicTacToe game in multiplayer offline mode
 def open_tic_tac_toe_sp_2p():
     global game
-    root = Tk()
-    root.geometry("500x500")
+    open_tic_tac_toe_sp_2p_window=Toplevel(root)
+    root.withdraw()
+    open_tic_tac_toe_sp_2p_window.geometry("320x362")
     # Create and start the game
-    game = TicTacToe(master=root, type="sp2")
-    root.mainloop()
+    game = TicTacToe(master=open_tic_tac_toe_sp_2p_window, type="sp2")
+    open_tic_tac_toe_sp_2p_window.mainloop()
 
 # function to open the TicTacToe game in single player offline mode
 def open_tic_tac_toe_sp_1p():
     global game
-    root = Tk()
-    root.geometry("500x500")
+    open_tic_tac_toe_sp_1p_window=Toplevel(root)
+    root.withdraw()
+    open_tic_tac_toe_sp_1p_window.geometry("320x362")
     # Create and start the game
-    game = TicTacToe(master=root, type="sp1")
-    root.mainloop()
+    game = TicTacToe(master=open_tic_tac_toe_sp_1p_window, type="sp1")
+    open_tic_tac_toe_sp_1p_window.mainloop()
 
 def main():
-    global start_screen
+    global root
     root = Tk()
     root.title("Game Selection")
     
