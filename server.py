@@ -21,7 +21,7 @@ def clientThread(clientSocket, clientAddress):
 hostSocket = socket(AF_INET, SOCK_STREAM)                               # create socket with IPv4 and TCP protocol
 hostSocket.setsockopt(SOL_SOCKET, SO_REUSEADDR,1)                       # reuse socket address
 
-hostIp = "192.168.11.204"
+hostIp = "localhost"
 portNumber = 7500
 hostSocket.bind((hostIp, portNumber))
 hostSocket.listen()
