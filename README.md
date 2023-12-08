@@ -13,9 +13,9 @@ This project is an implementation of a simple online and offline multiplayer gam
 - [Game Descriptions](#game-descriptions)
 - [Multiplayer Setup](#multiplayer-setup)
 - [Offline Mode](#offline-mode)
+- [Report](https://drive.google.com/file/d/1nvCruiXMTOY58TNyZpktVeBFGJwb-0Kv/view?usp=sharing)
 - [Contributors](#contributors)
 - [License](#license)
-- [Report](https://drive.google.com/file/d/1nvCruiXMTOY58TNyZpktVeBFGJwb-0Kv/view?usp=sharing)
 
 ## Getting Started
 
@@ -90,6 +90,8 @@ To run the multiplayer game application, execute the following commands:
 ## Offline Mode
 
 For offline mode, you can play against the computer in both "Rock, Paper, Scissors" and "Tic Tac Toe." The computer makes moves based on the game rules and its intelligence in the case of Tic Tac Toe.
+
+## [Report](https://drive.google.com/file/d/1nvCruiXMTOY58TNyZpktVeBFGJwb-0Kv/view?usp=sharing)
 
 ## Contributors
 
