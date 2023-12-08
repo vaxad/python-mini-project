@@ -15,6 +15,7 @@ This project is an implementation of a simple online and offline multiplayer gam
 - [Offline Mode](#offline-mode)
 - [Contributors](#contributors)
 - [License](#license)
+- [Report](https://drive.google.com/file/d/1nvCruiXMTOY58TNyZpktVeBFGJwb-0Kv/view?usp=sharing)
 
 ## Getting Started
 
