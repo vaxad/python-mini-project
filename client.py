@@ -162,7 +162,8 @@ class TicTacToe:
         for row in range(3):
             for col in range(3):
                 self.buttons[row][col].grid(row=row, column=col)
-            # Callback function for closing the TicTacToe window
+                
+    # function to close game and bring start_screen back
     def on_close(self):
         global game
         root.deiconify()  # Make the root window visible again
@@ -364,7 +365,7 @@ def open_tic_tac_toe_sp_1p():
 def main():
     global root
     root = Tk()
-    root.title("Game Selection")
+    root.title("Game Box")
     
     heading = Label(root, text="Python project by Varad, Tirath and Vikas", font=("Helvetica", 16))
     heading.pack(pady=10, padx=20)
