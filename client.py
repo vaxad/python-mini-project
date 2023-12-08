@@ -3,11 +3,13 @@ from threading import *
 from tkinter import *
 import random
 from tkinter import messagebox
+import tictactoe
+import copy
 
 clientSocket = socket(AF_INET, SOCK_STREAM)
 clientSocket.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
 
-hostIp = "localhost"
+hostIp = "192.168.29.163"
 portNumber = 7500
 
 clientSocket.connect((hostIp, portNumber))
@@ -41,7 +43,7 @@ def recvMessage():
         print(e)
         clientSocket.close()
 
-recvThread = Thread(target=recvMessage)     # the recvThread will run the recvMessage functionin the background
+recvThread = Thread(target=recvMessage)     # the recvThread will run the recvMessage functioning the background
 recvThread.daemon = True                    # this will make sure that the recvThread is killed when the main thread is killed
 recvThread.start()
 
@@ -228,19 +230,26 @@ class TicTacToe:
             row, col = random.choice(empty_cells)
             return row, col
 
-    # function to make move in single player mode
+    # function to make move in single player mode using minimax
+    def computer_move_minimax(self):
+        copy_board = copy.deepcopy(self.board)
+        for i in range(len(copy_board)):
+            for j in range(len(copy_board[i])):
+                if copy_board[i][j] == ' ':
+                    copy_board[i][j] = None
+        move = tictactoe.minimax(copy_board)
+        if move is not None:
+            row, col = move
+            self.board[row][col] = 'O'
+            self.buttons[row][col]['text'] = 'O'
+
     def computer_move(self):
-        row, col = self.find_best_move()        # find the best possible move
-        empty_cells = [(row, col) for row in range(3) for col in range(3) if self.board[row][col] == ' ']
-        # either choose the best move or choose a random move
-        if(random.choice([True, True, True, True, False])):        # 80% chance of choosing the best move
-            self.board[row][col] = 'O'
-            self.buttons[row][col]['text'] = 'O'
+        # Function for generating computer move
+        if random.choice([True, True, True, True, False]):
+            self.computer_move_minimax()
         else:
-            row, col = random.choice(empty_cells)
-            self.board[row][col] = 'O'
-            self.buttons[row][col]['text'] = 'O'
-        
+            self.computer_move_random()
+
         if self.check_winner():
             messagebox.showinfo("Tic-Tac-Toe", f"Player {self.current_player_sp} wins!")
             self.reset_board()
@@ -250,7 +259,14 @@ class TicTacToe:
                 messagebox.showinfo("Tic-Tac-Toe", "It's a tie!")
                 self.reset_board()
             else:
-                self.current_player_sp= 'X'
+                self.current_player_sp = 'X'
+
+    def computer_move_random(self):
+        # Function for generating a random move
+        empty_cells = [(row, col) for row in range(3) for col in range(3) if self.board[row][col] == ' ']
+        row, col = random.choice(empty_cells)
+        self.board[row][col] = 'O'
+        self.buttons[row][col]['text'] = 'O'
     
     # function to make move in single player player offline mode
     def make_move_sp1(self, row, col):
