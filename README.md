@@ -93,6 +93,8 @@ For offline mode, you can play against the computer in both "Rock, Paper, Scisso
 
 ## [Report](https://drive.google.com/file/d/1nvCruiXMTOY58TNyZpktVeBFGJwb-0Kv/view?usp=sharing)
 
+The Python Mini Project is a multiplayer game application featuring two games: "Rock, Paper, Scissors" and "Tic Tac Toe." The project comprises client-side and server-side code, facilitating both online and offline gameplay. This report will analyze the structure, functionality, and purpose of the codebase.
+
 ## Contributors
 
 - [Varad](https://github.com/vaxad)
