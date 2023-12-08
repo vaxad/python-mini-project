@@ -9,7 +9,7 @@ import copy
 clientSocket = socket(AF_INET, SOCK_STREAM)
 clientSocket.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
 
-hostIp = "192.168.29.163"
+hostIp = "localhost"
 portNumber = 7500
 
 clientSocket.connect((hostIp, portNumber))
