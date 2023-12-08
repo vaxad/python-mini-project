@@ -85,16 +85,16 @@ def open_rps_game_mp():
     # creating a new window
     rps_window.title("Rock, Paper, Scissors")
 
-    rock_button = Button(rps_window, text="Rock", command=lambda: play_game_mp("Rock"))
-    rock_button.pack(pady=10)
+    rock_button = Button(rps_window, text="Rock", font=('normal', 14), width=10, height=3, command=lambda: play_game_mp("Rock"))
+    rock_button.pack(side="left", padx=10)
 
-    paper_button = Button(rps_window, text="Paper", command=lambda: play_game_mp("Paper"))
-    paper_button.pack(pady=10)
+    paper_button = Button(rps_window, text="Paper", font=('normal', 14), width=10, height=3, command=lambda: play_game_mp("Paper"))
+    paper_button.pack(side="left", padx=10)
 
-    scissors_button = Button(rps_window, text="Scissors", command=lambda: play_game_mp("Scissors"))
-    scissors_button.pack(pady=10)
+    scissors_button = Button(rps_window, text="Scissors", font=('normal', 14), width=10, height=3, command=lambda: play_game_mp("Scissors"))
+    scissors_button.pack(side="left", padx=10)
 
-    quit_button = Button(rps_window, text="Quit", command=lambda: (rps_window.destroy(),root.deiconify()))
+    quit_button = Button(rps_window, text="Quit", command=lambda: on_rps_game_close(rps_window))
     quit_button.pack(pady=10)
     
     
@@ -113,18 +113,18 @@ def open_rps_game_sp():
     # creating a new window
     rps_window.title("Rock, Paper, Scissors")
 
-    rock_button = Button(rps_window, text="Rock", command=lambda: play_game_sp("Rock"))
-    rock_button.pack(pady=10)
+    rock_button = Button(rps_window, text="Rock", font=('normal', 14), width=10, height=3, command=lambda: play_game_sp("Rock"))
+    rock_button.pack(side="left", padx=10)
 
-    paper_button = Button(rps_window, text="Paper", command=lambda: play_game_sp("Paper"))
-    paper_button.pack(pady=10)
+    paper_button = Button(rps_window, text="Paper", font=('normal', 14), width=10, height=3, command=lambda: play_game_sp("Paper"))
+    paper_button.pack(side="left", padx=10)
 
-    scissors_button = Button(rps_window, text="Scissors", command=lambda: play_game_sp("Scissors"))
-    scissors_button.pack(pady=10)
+    scissors_button = Button(rps_window, text="Scissors", font=('normal', 14), width=10, height=3, command=lambda: play_game_sp("Scissors"))
+    scissors_button.pack(side="left", padx=10)
 
-    quit_button = Button(rps_window, text="Quit", command=lambda: (rps_window.destroy(),root.deiconify()))
+    quit_button = Button(rps_window, text="Quit", command=lambda: on_rps_game_close(rps_window))
     quit_button.pack(pady=10)
-    
+
     txtMessages = Text(rps_window, width=50)
     txtMessages.pack(pady=10)
     
